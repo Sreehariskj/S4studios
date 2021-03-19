@@ -19,6 +19,8 @@
   <link href="assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -297,7 +299,7 @@
                       </h5>
                     </div>
                     <div>
-                      <form id="gform" action="https://script.google.com/macros/s/AKfycbyhagOgT0AuUa0Zkl7c7EzTjIQgSmDSZyTOqj3lZmYR_mIhYWy_YNL1PcncDkP3WdzE/exec" method="POST" role="form" class="php-email-form">
+                      <form id="submit-form" action="" role="form" class="php-email-form">
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
@@ -402,6 +404,28 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 <script src="https://kit.fontawesome.com/74e3e6c46c.js" crossorigin="anonymous"></script>
+
+
+<script>
+  $("#submit-form").submit((e) => {
+    e.preventDefault()
+    $.ajax({
+      url: "https://script.google.com/macros/s/AKfycbyhagOgT0AuUa0Zkl7c7EzTjIQgSmDSZyTOqj3lZmYR_mIhYWy_YNL1PcncDkP3WdzE/exec",
+      data: $("#submit-form").serialize(),
+      method: "post",
+      success: function(response) {
+        alert("Form submitted successfully")
+        window.location.reload()
+        //window.location.href="https://google.com"
+      },
+      error: function(err) {
+        alert("Something Error")
+
+      }
+    })
+  })
+</script>
+
 </body>
 
 </html>
